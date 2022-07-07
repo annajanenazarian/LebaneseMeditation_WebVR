@@ -13,3 +13,5 @@ by Anna-Jane Nazarian & Amine Ismail
 
 Languages: HTML, CSS, JavaScript 
 Built using the A-frame framework for 3D/AR/VR. 
+
+![Main Menu Screen](https://github.com/annajanenazarian/LebaneseMeditation_WebVR/blob/main/image_2022-07-07_140201468.png "Main Menu Screen")
