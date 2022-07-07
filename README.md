@@ -1,4 +1,10 @@
-# LebaneseMeditation_WebVR
-Lebanese Meditation VR App completed for the Intro to VR course at LAU for Spring 2022. 
+# Lebanese Virtual Meditation App
 
-Project can be viewed here: https://glitch.com/~lebanese-meditation
+Demo of Final Project 
+
+Intro to VR 
+School of Engineering 
+Lebanese American University - Byblos Campus 
+
+Lebanese VR Meditation 
+by Anna-Jane & Amine

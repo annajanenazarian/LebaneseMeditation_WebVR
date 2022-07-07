@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!--- Mobile movement--->
+    <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <!---Event set--->
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <!---Look-at--->
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img
+          id="img"
+          src="https://cdn.glitch.global/192965d4-a72c-49ee-85c6-d43220db0f9f/img.jpg?v=1644329691623"
+        />
+        <img
+          id="concrete"
+          src="https://cdn.glitch.global/192965d4-a72c-49ee-85c6-d43220db0f9f/concrete.jpg?v=1644330937705"
+        />
+        <img
+          id="concrete-nm"
+          src="https://cdn.glitch.global/192965d4-a72c-49ee-85c6-d43220db0f9f/concrete-nm.png?v=1644330933092"
+        />
+        <img
+          id="sky"
+          src="https://cdn.glitch.global/192965d4-a72c-49ee-85c6-d43220db0f9f/sky?v=1644352252743"
+        />
+        <img
+          id="pav"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/istockphoto-1298976067-612x612.jpg?v=1644876985041"
+        />
+        <img
+          id="pav-nm"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/pav.png?v=1644877089846"
+        />
+        <img
+          id="pav2"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/TexturesCom_Pavement_Regular1_2x2_1K_albedo.jpg?v=1644884356242"
+        />
+        <img
+          id="pav2-nm"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/TexturesCom_Pavement_Regular1_2x2_1K_normal.jpg?v=1644884360284"
+        />
+        <img
+          id="road"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/TexturesCom_FloorStreets0100_1_seamless_S.jpg?v=1650986786860"
+        />
+        <img
+          id="road-nm"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/NormalMap%20(2).png?v=1650986788612"
+        />
+        <img
+          id="grass-pv"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/TexturesCom_Grass0130_1_seamless_S.jpg?v=1650986958095"
+        />
+        <img
+          id="grass-pv-nm"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/NormalMap%20(3).png?v=1650986959675"
+        />
+        <img
+          id="forest"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/TexturesCom_NorwayForest_4K_hdri_sphere_tone.jpg?v=1644878827203"
+        />
+        <img
+          id="mountain"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/TexturesCom_MountainsGreen0074_2_masked_S.png?v=1644884626577"
+        />
+        <!--a-asset-item id="test" src="https://drive.google.com/file/d/1p7QuXZnFFg0j4fAlP775hPYYUYRuwZGs/view?usp=sharing"></a-asset-item-->
+        <img
+          id="brass"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/TexturesCom_Metal_BrassPolished_1K_albedo.jpg?v=1644885315566"
+        />
+        <img
+          id="metal"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/depositphotos_41955217-stock-photo-seamless-metal-texture-background.jpg?v=1644887389941"
+        />
+        <img
+          id="head"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/texture-headlight-1508273.jpg?v=1644887518561"
+        />
+        <img
+          id="h"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/360_F_211421519_31DPC9TqE6TPiKROHsOinCO0yBCb8tu2.jpg?v=1644887720414"
+        />
+        <img
+          id="nin"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/800x600.png?v=1644887903664"
+        />
+        <img
+          id="rub"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/rub.jpg?v=1644888207996"
+        />
+        <a-asset-item
+          id="test"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/D1201A057.glb?v=1644883585475"
+        ></a-asset-item>
+        <!-- Tree GLB Generator: https://gltf-trees.donmccurdy.com/-->
+        <a-asset-item
+          id="tree"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/tree%20(2).glb?v=1644880531752"
+        ></a-asset-item>
+        <a-asset-item
+          id="bush"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/tree%20(3).glb?v=1644880998933"
+        ></a-asset-item>
+        <!-- OBJ to GLB converter: https://products.aspose.app/3d/conversion/obj-to-glb-->
+        <a-asset-item
+          id="streetlight"
+          src="https://cdn.glitch.global/11b244c4-d052-4c6c-9f34-b4b5de75cb24/streetlight.glb?v=1644678881372"
+        ></a-asset-item>
+        <a-asset-item
+          id="car"
+          src="https://cdn.glitch.global/055a33cb-38b8-4510-85f1-d3d5046c8e79/ford%20mustan%20gt1967.glb?v=1644883135845"
+        ></a-asset-item>
+      </a-assets>
+      <!--- Jounieh Sky>
+        <a-sky color="white" src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/aerial-panoramic-view-to-jounieh-city-and-bay-lebanon-2C1928B.jpg?v=1650881580385"></a-sky--->
+      <!--Sunset-->
+      <a-sky color="white" src="#sky"></a-sky>
+
+      <!--Road-->
+      <a-box
+        position="0 0 0"
+        rotation="90 0 0"
+        src="#road"
+        scale="5.5 200 0"
+        color="white"
+        repeat="1 50 1"
+        normal-map-repeat="1 200 0.2"
+        roughness="1"
+      ></a-box>
+      <!--Side of the road - right-->
+      <a-box
+        position="3 0 0"
+        rotation="90 0 0"
+        scale="1 200 0.5"
+        color="#6B1922"
+        src="#pav"
+        normal-map="#pav-nm"
+        repeat="1 200 0.5"
+        normal-map-repeat="1 100 0.5"
+        roughness="0.5"
+      ></a-box>
+      <a-box
+        position="2.5 0 0"
+        rotation="90 0 0"
+        scale="0.255 200.5 0.55"
+        color="grey"
+        src="#concrete"
+        normal-map="#pconcrete-nm"
+        repeat="1 200 0.5"
+        normal-map-repeat="1 300 0.5"
+        roughness="0.5"
+      ></a-box>
+      <!--Side of the road - left-->
+      <a-box
+        position="-3 0 0"
+        rotation="90 0 0"
+        scale="1 200 0.5"
+        color="#6B1922"
+        src="#pav"
+        normal-map="#pav-nm"
+        repeat="1 200 0.5"
+        normal-map-repeat="1 100 0.5"
+        roughness="0.5"
+      ></a-box>
+      <a-box
+        position="-2.5 0 0"
+        rotation="90 0 0"
+        scale="0.255 200.5 0.55"
+        color="grey"
+        src="#concrete"
+        normal-map="#pconcrete-nm"
+        repeat="1 200 0.5"
+        normal-map-repeat="1 300 0.5"
+        roughness="0.5"
+      ></a-box>
+      <!-- Ground -->
+      <a-plane
+        color="#00885B"
+        src="#grass-pv"
+        normal-map="#grass-pv-nm"
+        rotation="-90 0 90"
+        scale="200 100 0"
+        position="0 -0.1 0"
+        repeat="50 25 0"
+        normal-map-repeat="50 25 0"
+      >
+      </a-plane>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 5"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <!-- Trees-->
+      <a-entity gltf-model="#tree" position="-5 4 -7" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 -17" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 -27" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 -37" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 -47" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 -57" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 -67" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 -77" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 -87" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 7" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 17" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 27" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 37" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 47" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 57" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 67" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 77" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#tree" position="-5 4 87" scale="2 2 2"></a-entity>
+      <!--Bushes- to the right-->
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 -10"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 -20"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 -30"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 -40"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 -50"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 -60"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 -70"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 -80"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 -90"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 -100"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 10"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 20"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 30"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 40"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 50"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 60"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 70"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 80"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 90"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 100"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#bush"
+        position="5 1 0"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 15"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 25"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 35"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 45"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 55"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 65"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 75"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 85"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 -5"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 -15"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 -25"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 -35"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 -45"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 -55"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 -65"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 -75"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 -85"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+      <a-entity
+        gltf-model="#streetlight"
+        position="4 -0.2 -95"
+        scale="0.0025 0.0025 0.0025"
+        color="black"
+      ></a-entity>
+
+      <a-curvedimage
+        src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Calm%20Breathe%20Bubble%20_%20Breathing%20Exercise.mp4?v=1650780522841"
+        position="0 1.6 0"
+        theta-length="90"
+        theta-start="135"
+        radius="0.707"
+        height="0.753"
+        scale="4 4 4"
+        look-at="#cam"
+      >
+      </a-curvedimage>
+
+      <!---Back to main--->
+      <a-entity
+        id="back-button"
+        gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Amazing%20Amberis%20(2).glb?v=1650885118871"
+        position="0.2 0 -0.1"
+        scale="0.02 0.02 0.02"
+        color="black"
+        link="href: index.html"
+      ></a-entity>
+
+      <a-entity movement-controls="fly: true">
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+        <a-camera id="cam">
+          <a-cursor
+            id="cursor"
+            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+            event-set__mouseenter="_event: mouseenter; color: lightblue"
+            event-set__mouseleave="_event: mouseleave; color: black"
+            scale="0.7 0.7 0.7 "
+            position="0 0 -0.7"
+          ></a-cursor>
+        </a-camera>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

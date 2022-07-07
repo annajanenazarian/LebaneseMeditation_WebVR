@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="index.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <a-assets>
+        <img
+          id="play"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/play--v1.png?v=1650961123602"
+        />
+        <img
+          id="pause"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/pause--v1.png?v=1650961306970"
+        />
+
+        <video
+          id="grandprix"
+          crossorigin="anonymous"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/mariam%20nour.mp4?v=1650893445100"
+        ></video>
+      </a-assets>
+
+      <a-entity>
+        <a-camera>
+          <a-cursor
+            id="cursor"
+            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+            event-set__mouseenter="_event: mouseenter; color: lightblue"
+            event-set__mouseleave="_event: mouseleave; color: black"
+            scale="0.7 0.7 0.7 "
+            position="0 0 -0.7"
+          ></a-cursor>
+        </a-camera>
+      </a-entity>
+
+      <a-video src="#grandprix" width="10" height="6.5" position="0 3 -12">
+        <a-image
+          id="videoControls"
+          src="#play"
+          position="0 -4 0"
+          scale="1 1 1"
+          play-pause
+        >
+        </a-image>
+      </a-video>
+      <a-entity
+        position="0 4.5 -5"
+        text="align: center;
+                width: 26;
+                wrapCount: 100;
+                color: white;
+                value: Morning Meditation"
+      >
+      </a-entity>
+
+      <a-sky
+        id="sky"
+        color="#white"
+        src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/aerial-panoramic-view-to-jounieh-city-and-bay-lebanon-2C1928B.jpg?v=1650881580385"
+        rotation="0 -50 0"
+      ></a-sky>
+
+      <a-entity
+        id="stand"
+        gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Brilliant%20Kup.glb?v=1650320623031"
+        position="0 0 -0.5"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="back-button"
+        gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Amazing%20Amberis%20(2).glb?v=1650885118871"
+        position="0.2 0 -1.6"
+        scale="0.02 0.02 0.02"
+        color="black"
+        link="href: index.html"
+      ></a-entity>
+
+      <a-entity
+        id="leftHand"
+        laser-controls="hand: left"
+        raycaster="objects: .raycastable"
+      ></a-entity>
+      <a-entity
+        id="rightHand"
+        laser-controls="hand: right"
+        raycaster="objects: .raycastable"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>

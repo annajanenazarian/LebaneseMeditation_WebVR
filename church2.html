@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!--- Mobile movement--->
+    <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <!---Event set--->
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <!---Look-at--->
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+  </head>
+
+  <a-scene light="defaultLightsEnabled: true">
+    <body>
+      <a-entity
+        position="0 2 -4"
+        text="align: center;
+                width: 36;
+                wrapCount: 150;
+                color: white;
+                value: Church Under Construction"
+      >
+      </a-entity>
+
+      <a-sky
+        color="#white"
+        src="https://cdn.glitch.me/809f5228-f6b5-4178-add7-eda4fcfb1757/videoplayback%20(6).mp4?v=1650969161826"
+        rotation="0 -90 0"
+        volume="0"
+      ></a-sky>
+
+      <a-sound
+        src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Kabarnos%20-%20Agni%20Parthene%20(Live%2C%20Lebanon).mp3?v=1650932924433"
+        autoplay="true"
+        position="0 2 -5"
+        loop="true"
+        volume="10"
+      ></a-sound>
+
+      <a-entity
+        id="stand"
+        gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Brilliant%20Kup.glb?v=1650320623031"
+        position="0 0 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="back-button"
+        gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Amazing%20Amberis%20(2).glb?v=1650885118871"
+        position="0.2 0 -1.6"
+        scale="0.02 0.02 0.02"
+        color="black"
+        link="href: index.html"
+      ></a-entity>
+
+      <!--- Allow movement on Mobile--->
+      <a-entity movement-controls="fly: true">
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+        <a-camera>
+          <a-cursor
+            id="cursor"
+            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+            event-set__mouseenter="_event: mouseenter; color: lightblue"
+            event-set__mouseleave="_event: mouseleave; color: black"
+            scale="0.7 0.7 0.7 "
+            position="0 0 -0.7"
+          ></a-cursor>
+        </a-camera>
+      </a-entity>
+    </body>
+  </a-scene>
+</html>

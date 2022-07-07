@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script2.js"></script>
+    <script type="text/javascript" src="audio.js"></script>
+  </head>
+  <a-assets>
+    <a-asset-item
+      id="Charbel"
+      src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/no%20sound%20charbelv.mp4?v=1650930467019"
+    ></a-asset-item>
+    <a-asset-item
+      id="Harissa"
+      src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/videoplayback%20(3)%20(online-video-cutter.com).mp4?v=1650892797386"
+    ></a-asset-item>
+  </a-assets>
+  <style>
+    .buttons {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      height: 10em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .b1,
+    .b2,
+    .b3,
+    .b4 {
+      margin: 5px;
+      padding: 5px;
+      border: 2px solid white;
+      border-radius: 10px;
+      background: transparent;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: Poppins, fantasy;
+      width: 4em;
+      height: 3em;
+    }
+
+    .b1:active,
+    .b2:active,
+    .b3:active,
+    .b4:active {
+      background-color: #46959a;
+      transform: translateY(5px);
+    }
+  </style>
+  <div class="buttons">
+    <button class="b2">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABLUlEQVRIie2VMU7DMBiFbQQscAFKR4oEYoGBjD0AvUGl7jAy0A1xAiRggAsgkaEwdGXkBiwVI+rQkW6AQB9DXyQPdmNbbPBL0e9nf3ovSuzEmP/6rQLOIpj9bHOAGuYU+AY6WeYRASfCpsB6snkoAOgByxoPhN4km/sCgGMtXUlvAJ+6mknmgYBd4B34ArY1dyf8yAWjyuH7wKbGl1o+l+5KD7MCHINSupB+lm5Jj3IDmpJj6VXpqfSKqxfmv+qkqh6hdXVOQFv9SX1H/VV9TX1ijDGLqe7W2ltmW/BeU131R/VC/SVoQvw23QM+mG3TLc2Vwg/n3qkvxMNUB+1CukXMQQuFBJgesARY4EHoda25L6SG6wt7AxrRAW5IDVN9rg+SzN2QCCbvh/O36wdGL0cK6rDutQAAAABJRU5ErkJggg=="
+      />
+    </button>
+
+    <button class="b3">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABYUlEQVRIid2VsUoDQRCGB0FSWYknIlaiNinF0j6KdQoL68ROQSslzyBY6BMIYqmd+AYWKoitCmKpWESDfBb+0c3mdvciBsGB43Z2Zv/vdmaXM/tXBtSArF/idT7tMg8CNApozMWCmcS7IMAWQEJ8G3gHlnqGAAtAMwHY0LonYPxHkED+ClDS+Ejr9mMf04Y8xnqivDXl7MqfBN6AFjARAzTotFDjZ4Gmal/W3IHWrLqJi8C9J9rSsc1tvLN2T/Ed+cvyj92kuxzxqlOu4E6AecXO5U/Lv3GTgPAxjJULGNb8g/wh+c9mZgPBRuTblZmVzezUgbzqKXm5g4VK5O0gdk/ONJ5R/NYFVBJ9+CphBDKqd7vJJ8E68H1MW0DV71EIotih5tejxfYgHYDETirAC7GLlgPpAiQgU0lxR2QzBFB8BLhQyjUwVljch0TivwKJ/nC8ctV7BhT8iAyo9UX8z+wDyG75Pc1uI1YAAAAASUVORK5CYII="
+      />
+    </button>
+    <button class="b1">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABI0lEQVRIie2WO24CMRBAx1FElYuwBSVIRHTpQOICdLSRIiquwEVyjzRBKWk4BRIFnwaFPAo2yGvGAju7RkJ5pbX2m5kdf0T+KQmgDnwBjZTSJrDgyBJ4TiF9AVYU2QLdKqUDYIfONzCsQvoG7D3SX36AsYiIKT2CYxC4Y8aYguuhCvE1eMVAH/gANhfKd+LP0QCTa2WaOCqoPNMoQsRaqUexlQrhrKuBtYg8RS2Wd66WodvVZ3iq2A4JIPYfh08qzu8oS6zc7x4DF43dMnN3INUB8u4OaM3lbYzIjGci0jLG7OzBqjOeiUjPlaqEHgwKa2AKvAI1nyeouS7uxQBuezthXeLaR3kJT5d4qXCLZ4slT/9Qs+Tpn6aWPAM+gSyZ9O45AIiye0xeyXl0AAAAAElFTkSuQmCC"
+      />
+    </button>
+    <button class="b4">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAACAElEQVRYhe2WP2uTURTGf6cRFF3ULHVwsgUdFAehiAo6tF0E/+DiF3GpmmTTT2D9GO5Vd1dBFAPSdLCuLYQIlsch943HN+e2CUnegPhsOefc8zz3Pm/uufAfM4SkT5Kez1NAgZfzFjAfERrGkIhjrngJuA/UUugn0AG2zGxvTOI6cDNIPZHUM7NGtKgdKJakrqRNSadHID4r6bWkXqZXgWa0+OsRi3YkLR9CfklS54geBQYnYK7BEvAYOJVCx4HrwIrj6QArZrZbIl8EPgDnXfgjcDnQ2jSzVm4j0c7uStpz6t9Kqrl8LcUKdCU9TLnszseCpFVJB67Rhss1XfyXpDWXm5w8IDqQtJpitxNpSDI18tSsOOpG+r0oaTdnTar5IunpxOSuYT0JKfv+Xf0PsRpIajnygSVVkd85zPdZk58r+b4laSFZUp81eU3Su8h3SY3MR9iW9GxaAkLfS3/FZmlNgReTkq/p74uo4XIbJWHrgYAhceOQ35O0X/bd5aOr+FEgIBThh9Ey/WF0MoVOADeAa65+m/4w+lESOc4waplZOI5z74EC2+pPzNxJXUw1o2AgYMH3yPTuAq+AK2bWzgkws8/AVWAT6OXqhta5HVwAHvDnSdYDvgHvzWx/1Iap1xngFvAmSMcWzALB0Vd3awYCqiUvCaiePAmY7nvgn8RvgF2Ip7FImUYAAAAASUVORK5CYII="
+      />
+    </button>
+  </div>
+
+  <script> window.onload = function () {
+  document.querySelector(".b2").addEventListener("click", function () {
+    var myobj1 = document.getElementById("audio1"); 
+    myobj1.setAttribute("volume", 0); 
+    var myobj2 = document.getElementbyId("audio2");
+    myobj2.setattribute("volume", 0);
+  })}; 
+      </script>
+  <a-scene>
+    <body>
+      <!--<a-entity id="sounds">
+        <a-sound
+          class="sound"
+          id="audio2"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/sound%20charbel.m4a?v=1650929162474"
+          autoplay="true"
+          position="0 2 -5"
+          loop="true"
+          volume="5"
+        ></a-sound>
+        <a-sound
+          id="audio1"
+          class="sound"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Syriac%20Maronite%20Hymns%20%D8%A7%D9%84%D8%A3%D9%84%D8%AD%D8%A7%D9%86%20%D8%A7%D9%84%D8%B3%D8%B1%D9%8A%D8%A7%D9%86%D9%8A%D9%91%D8%A9%20%D8%A7%D9%84%D9%85%D8%A7%D8%B1%D9%88%D9%86%D9%8A%D9%91%D8%A9.mp3?v=1650886020138 "
+          autoplay="false"
+          position="0 2 -4"
+          loop="false"
+          volume="0"
+        ></a-sound>
+      </a-entity>-->
+      
+    <audio id="audio1" controls autoplay="true"
+   volume="10">
+  <source src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Syriac%20Maronite%20Hymns%20%D8%A7%D9%84%D8%A3%D9%84%D8%AD%D8%A7%D9%86%20%D8%A7%D9%84%D8%B3%D8%B1%D9%8A%D8%A7%D9%86%D9%8A%D9%91%D8%A9%20%D8%A7%D9%84%D9%85%D8%A7%D8%B1%D9%88%D9%86%D9%8A%D9%91%D8%A9.mp3?v=1650886020138" type="audio/mpeg">
+      </audio>
+
+      <a-entity>
+        <a-camera>
+          <a-cursor
+            id="cursor"
+            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+            event-set__mouseenter="_event: mouseenter; color: lightblue"
+            event-set__mouseleave="_event: mouseleave; color: black"
+            scale="0.7 0.7 0.7 "
+            position="0 0 -0.7"
+          ></a-cursor>
+        </a-camera>
+      </a-entity>
+
+      <a-entity
+        id="stand"
+        gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Brilliant%20Kup.glb?v=1650320623031"
+        position="0 0 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="back-button"
+        gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Amazing%20Amberis%20(2).glb?v=1650885118871"
+        position="0.2 0 -1.6"
+        scale="0.02 0.02 0.02"
+        color="black"
+        link="href: index.html"
+      ></a-entity>
+
+      <a-sky
+        id="sky"
+        color="#white"
+        src="#Charbel"
+        rotation="0 -50 0"
+        loop="true"
+      ></a-sky>
+    </body>
+  </a-scene>
+</html>

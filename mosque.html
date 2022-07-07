@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!--- Mobile movement--->
+    <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <!---Event set--->
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <!---Look-at--->
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+  </head>
+
+  <a-scene light="defaultLightsEnabled: true">
+    <body>
+      <a-sky
+        color="#white"
+        src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/mASJED.mp4?v=1650932923128"
+        rotation="0 0 0"
+      ></a-sky>
+
+      <a-entity
+        position="0 2 -4"
+        text="align: center;
+                width: 36;
+                wrapCount: 150;
+                color: white;
+                value: Mosque Under Construction;
+              look-at"
+      >
+      </a-entity>
+
+      <a-sound
+        src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/%D8%A7%D8%B1%D8%AD%20%D8%B3%D9%85%D8%B9%D9%83..%20%D8%AA%D9%84%D8%A7%D9%88%D8%A9%20%D9%87%D8%A7%D8%AF%D8%A6%D8%A9%20%D8%AA%D8%B1%D9%8A%D8%AD%20%D8%A7%D9%84%D9%82%D9%84%D8%A8%20%D9%88%D8%A7%D9%84%D8%B9%D9%82%D9%84%F0%9F%92%99%F0%9F%8E%A7%20_%20%D8%B3%D9%88%D8%B1%D8%A9%20%D8%A7%D9%84%D8%B1%D8%AD%D9%85%D9%86%20%D8%A7%D9%84%D9%82%D8%A7%D8%B1%D8%A6%20%D8%AD%D8%B3%D8%A7%D9%85%20%D8%A7%D9%84%D8%AF%D9%8A%D9%86%20%D8%B9%D8%A8%D8%A7%D8%AF%D9%8A%20__%20Surah%20Ar-Rahman.mp3?v=1650932943107"
+        autoplay="true"
+        position="0 2 -5"
+        loop="true"
+        volume="3"
+      ></a-sound>
+
+      <a-entity
+        id="stand"
+        gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Brilliant%20Kup.glb?v=1650320623031"
+        position="0 0 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="back-button"
+        gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Amazing%20Amberis%20(2).glb?v=1650885118871"
+        position="0.2 0 -1.6"
+        scale="0.02 0.02 0.02"
+        color="black"
+        link="href: index.html"
+      ></a-entity>
+
+      <!--- Allow movement on Mobile--->
+      <a-entity movement-controls="fly: true">
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+        <a-camera>
+          <a-cursor
+            id="cursor"
+            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+            event-set__mouseenter="_event: mouseenter; color: lightblue"
+            event-set__mouseleave="_event: mouseleave; color: black"
+            scale="0.7 0.7 0.7 "
+            position="0 0 -0.7"
+          ></a-cursor>
+        </a-camera>
+      </a-entity>
+    </body>
+  </a-scene>
+</html>

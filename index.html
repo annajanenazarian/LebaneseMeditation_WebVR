@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lebanese Meditation</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!--- Mobile movement--->
+    <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <!---Event set--->
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <!---Look-at--->
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+  </style>
+
+  <a-assets>
+    <audio
+      id="fairuz"
+      crossorigin="anonymous"
+      src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Fairuz_Shayef_el_Bahr_(getmp3.pro).mp3?v=1650748889448"
+    ></audio>
+  </a-assets>
+  <body>
+    <audio
+      id="click-sound"
+      crossorigin="anonymous"
+      src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"
+    ></audio>
+    <a-sky color="#6EBAA7"></a-sky>
+    <a-scene>
+      <a-sound
+        src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/OnlyMP3%20(mp3cut.net).mp3?v=1650886414566 "
+        autoplay="true"
+        position="0 2 -5"
+        loop="true"
+        volume="1"
+      ></a-sound>
+    </a-scene>
+    <a-scene light="defaultLightsEnabled: true">
+      <!--- Allow movement on Mobile--->
+      <a-entity movement-controls="fly: true">
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+        <a-camera>
+          <a-cursor
+            id="cursor"
+            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+            event-set__mouseenter="_event: mouseenter; color: lightblue"
+            event-set__mouseleave="_event: mouseleave; color: black"
+            scale="0.7 0.7 0.7 "
+            position="0 0 -0.7"
+          ></a-cursor>
+        </a-camera>
+      </a-entity>
+
+      <!--- 360 video of blue lines --->
+      <a-sky
+        color="#white"
+        src=" https://cdn.glitch.me/03eff459-d3df-4541-a982-4fd77cf5967c/vecteezy_3d-rendering-seamless-loop-motion-of-tunnel-with-light-blue_5363557_855.mov?v=1649196259126"
+        rotation="0 -90 0"
+      ></a-sky>
+
+      <a-entity
+        id="intro"
+        animation__start1="property: position; 
+                                from: 0 2 -50;
+                           to: 0 2 -4; 
+                           dur: 4000;
+                           dir: linear;
+                           easing: linear; 
+                           loop: false"
+        animation__leave="property: position;
+                          from: 0 2 -4;
+                          to: 0 2 -1000;
+                          delay: 2000;
+                          dur: 7000;
+                          easing: linear;
+                          startEvents: animationcomplete__start1"
+      >
+        <a-sphere
+          id="sphere-1"
+          color="#white"
+          position="0 0 0"
+          rotation="0 -90 0"
+          radius="1.6"
+          src="https://cdn.glitch.me/03eff459-d3df-4541-a982-4fd77cf5967c/telepoorte_fnl.mp4?v=1649224826329"
+        ></a-sphere>
+
+        <!---
+      <a-curvedimage
+                     src="https://cdn.glitch.global/03eff459-d3df-4541-a982-4fd77cf5967c/lebanon-flag-for-blogs-01.jpg?v=1649232188818"
+                     rotation="0 0 0"
+                     position="4 1 0" 
+                     theta-length="50"
+        theta-start="155"  
+        radius="0.5"  
+        height="0.295"  
+                     scale="4 4 4"></a-curvedimage> 
+        <a-curvedimage
+                     src="https://cdn.glitch.global/03eff459-d3df-4541-a982-4fd77cf5967c/lebanon-flag-for-blogs-01.jpg?v=1649232188818"
+                     rotation="0 0 0"
+                     position="-4 1 0" 
+                     theta-length="50"
+        theta-start="155"   
+        radius="0.5"  
+        height="0.295"
+                     scale="4 4 4"></a-curvedimage>--->
+
+        <a-entity
+          gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Incredible%20Tumelo.glb?v=1650887833613"
+          rotation="90 0  0"
+          position="0 -0.1 2"
+          scale="0.01 0.01 0.01"
+        ></a-entity>
+      </a-entity>
+
+      <a-entity
+        id="main-menu"
+        animation="property: visible; from: false; to: true; dur: 6000; easing:linear;"
+      >
+        <!--- Three screens for main menu--->
+        <a-entity look-at="#cam">
+          <a-box
+            scale="1 0.8 0.05"
+            color="white"
+            position="0 1.6 -1"
+            src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/TexturesCom_ConcreteBare0330_5_S.jpg?v=1650321101112"
+          >
+          </a-box>
+          <a-box
+            scale="1 0.8 0.05"
+            color="white"
+            position="-0.9 1.6 -0.64"
+            rotation="0 45 0"
+            src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/TexturesCom_ConcreteBare0330_5_S.jpg?v=1650321101112"
+          >
+          </a-box>
+
+          <a-box
+            scale="1 0.8 0.05"
+            color="white"
+            position="0.9 1.6 -0.64"
+            rotation="0 -45 0"
+            src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/ggg.png?v=1650321744727"
+          >
+          </a-box>
+
+          <!--- Button boxes --->
+        </a-entity>
+        <!--- Christianity --->
+        <a-box
+          id="jesus"
+          scale="0.35 0.15 0.03"
+          color="white"
+          position="-0.2 1.8 -0.9"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/christ.png?v=1650440828378"
+          animation__accelerate1="property: ROTATION; 
+                                        from: 0 0 0;
+                                        to: 0 180 0; 
+                                        dur: 1000;
+                                        easing: easeInQuad;
+                                        startEvents: click;"
+          sound="on: click; src: #click-sound"
+          shadow="receive: true"
+        >
+          <a-image
+            link="href: church.html"
+            position="0 0 -0.6"
+            scale="0.98 0.98 0.98"
+            src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/85.jpg?v=1650444881180"
+          ></a-image>
+        </a-box>
+        <!--- ISLAM--->
+        <a-box
+          id="mosque"
+          scale="0.35 0.15 0.03"
+          color="white"
+          position="0.2 1.8 -0.9"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/mosque.png?v=1650440836352"
+          animation__accelerate1="property: ROTATION; 
+                                        from: 0 0 0;
+                                        to: 0 180 0; 
+                                        dur: 1000;
+                                        easing: easeInQuad; 
+                                        startEvents: click;"
+          sound="on: click; src: #click-sound"
+        >
+          <a-image
+            link="href: mosque.html"
+            position="0 0 -0.6"
+            scale="0.98 0.98 0.98"
+            src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/214617.jpg?v=1650444881227"
+          ></a-image>
+        </a-box>
+
+        <a-box
+          id="orthodox"
+          scale="0.35 0.15 0.05"
+          color="white"
+          position="-0.2 1.6 -0.9"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/orthodox.png?v=1650441970631"
+          animation__accelerate1="property: ROTATION; 
+                                        from: 0 0 0;
+                                        to: 0 180 0; 
+                                        dur: 1000;
+                                        easing: easeInQuad; 
+                                        startEvents: click;"
+          sound="on: click; src: #click-sound"
+        >
+          <a-image
+            link="href: church2.html"
+            position="0 0 -0.6"
+            scale="0.98 0.98 0.98"
+            src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Iconostasis_of_Saint_Catherine's_Church.jpg?v=1650444880928"
+          ></a-image>
+        </a-box>
+        <a-box
+          id="breathe"
+          scale="0.35 0.15 0.05"
+          color="white"
+          position="0.2 1.6 -0.9"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/gratitude.png?v=1650441019474"
+          animation__accelerate1="property: ROTATION; 
+                                        from: 0 0 0;
+                                        to: 0 180 0; 
+                                        dur: 1000;
+                                        easing: easeInQuad; 
+                                        startEvents: click;"
+          sound="on: click; src: #click-sound"
+        >
+          <a-image
+            link="href: breathe.html"
+            position="0 0 -0.6"
+            scale="0.98 0.98 0.98"
+            src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/breat.png?v=1650746982306"
+          ></a-image>
+        </a-box>
+        <a-box
+          id="mountain"
+          scale="0.35 0.15 0.05"
+          color="white"
+          position="-0.2 1.4 -0.9"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/mountain.png?v=1650440954517"
+          animation__accelerate1="property: ROTATION; 
+                                        from: 0 0 0;
+                                        to: 0 180 0; 
+                                        dur: 1000;
+                                        easing: easeInQuad; 
+                                        startEvents: click;"
+          sound="on: click; src: #click-sound"
+        >
+          <a-image
+            link="href: jounieh.html"
+            position="0 0 -0.6"
+            scale="0.98 0.98 0.98"
+            src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/227545999_131012049212754_2243861616629946737_n.jpg?v=1650444881301"
+          ></a-image>
+        </a-box>
+        <a-box
+          id="beach"
+          scale="0.35 0.15 0.05"
+          color="white"
+          position="0.2 1.4 -0.9"
+          src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/beach.png?v=1650440959768"
+          animation__accelerate1="property: ROTATION; 
+                                        from: 0 0 0;
+                                        to: 0 180 0; 
+                                        dur: 1000;
+                                        easing: easeInQuad; 
+                                        startEvents: click;"
+          sound="on: click; src: #click-sound"
+        >
+          <a-image
+            link="href: beach.html"
+            position="0 0 -0.6"
+            scale="0.98 0.98 0.98"
+            src="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/254088272_423924825780100_8153913419885107042_n.jpg?v=1650444881064"
+          ></a-image>
+        </a-box>
+
+        <!--- TinkerCAD model for the user to stand on--->
+        <a-entity
+          id="stand"
+          gltf-model="https://cdn.glitch.global/809f5228-f6b5-4178-add7-eda4fcfb1757/Brilliant%20Kup.glb?v=1650320623031"
+          position="0 1 -0.20"
+          scale="2 2 2"
+        ></a-entity>
+      </a-entity>
+
+      <!--- Default Lightning in A-frame scene--->
+      <a-entity
+        light="type:ambient;
+                       color=#BBB"
+      ></a-entity>
+
+      <a-entity
+        light="type:directional;
+                       color=white;
+                       intensity=0.6;
+                       castShadow: true"
+        position="-0.5 1 1"
+      ></a-entity>
+
+      <!--- Soft Blue Light above user--->
+      <a-entity
+        light="type:spot;
+                       target:#stand;
+                       color:#bbd3ec;
+                       angle:180;
+                       penumbra:0.1;
+                       castShadow:true"
+        position="0 2 0"
+      ></a-entity>
+
+      <a-entity
+        id="leftHand"
+        laser-controls="hand: left"
+        raycaster="objects: .raycastable"
+      ></a-entity>
+      <a-entity
+        id="rightHand"
+        laser-controls="hand: right"
+        raycaster="objects: .raycastable"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>
